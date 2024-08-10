@@ -1,0 +1,11 @@
+/* OrderSummary.css */
+.small-image {
+    width: 100%; /* Make image fill the container width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .image-container {
+    /* height: 150px; Set height for image container */
+    overflow: hidden; /* Hide overflow if the image is larger */
+  }
+  

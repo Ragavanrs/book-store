@@ -1,12 +1,15 @@
-// Cart.js
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { Table } from "antd";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Table, Button, message } from "antd";
+import axios from "axios";
+import "./Cart.css";
 
 const Cart = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { orderDetails } = location.state;
-  console.log(orderDetails);
+  const { userId } = useParams();
+
   const columns = [
     {
       title: "Title",
@@ -22,7 +25,7 @@ const Cart = () => {
       title: "Price",
       dataIndex: "price",
       key: "price",
-      render: (text) => `$${text}`,
+      render: (text) => `$${text.toFixed(2)}`,
     },
     {
       title: "Quantity",
@@ -33,7 +36,8 @@ const Cart = () => {
       title: "Total",
       dataIndex: "total",
       key: "total",
-      render: (text, record) => `$${record.price * record.quantity}`,
+      render: (text, record) =>
+        `$${(record.price * record.quantity).toFixed(2)}`,
     },
   ];
 
@@ -48,11 +52,44 @@ const Cart = () => {
 
   const totalCost = dataSource.reduce((acc, item) => acc + item.total, 0);
 
+  const handleSaveOrder = async () => {
+    try {
+      const bookIds = dataSource.map((item) => item.key); // Extract book IDs
+
+      await axios.post("http://localhost:8080/orders", bookIds, {
+        params: {
+          userId,
+          totalCost,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      message.success("Order placed successfully!");
+      navigate(`/order-confirmation/${userId}`);
+    } catch (error) {
+      message.error("Failed to place order");
+      console.error("Failed to place order", error);
+    }
+  };
+
   return (
-    <div>
+    <div className="cart-container">
       <h2>Order Summary</h2>
-      <Table columns={columns} dataSource={dataSource} pagination={false} />
-      <h3>Total Cost: ${totalCost}</h3>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        pagination={false}
+        bordered
+        className="cart-table"
+      />
+      <h3 className="total-cost">Total Cost: ${totalCost.toFixed(2)}</h3>
+      <div className="button-container">
+        <Button type="primary" size="large" onClick={handleSaveOrder}>
+          Place Order
+        </Button>
+      </div>
     </div>
   );
 };

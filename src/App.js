@@ -7,7 +7,8 @@ import RegisterForm from "./components/RegisterForm";
 import OrderForm from "./components/OrderForm";
 import AppLayout from "./components/AppLayout";
 import Cart from "./components/Cart";
-
+import OrderConfirmation from "./components/OrderConfirmation";
+import OrderSummary from "./components/OrderSummary";
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,14 @@ function App() {
                 <Route path="/add-book/:userId" element={<BookForm />} />
                 <Route path="/order/:userId" element={<OrderForm />} />
                 <Route path="/cart/:userId" element={<Cart />} />
+                <Route
+                  path="/order-confirmation/:userId"
+                  element={<OrderConfirmation />}
+                />
+                <Route
+                  path="/order-summary/:userId"
+                  element={<OrderSummary />}
+                />
               </Routes>
             </AppLayout>
           }

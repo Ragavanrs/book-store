@@ -1,0 +1,43 @@
+.cart-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .cart-table {
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+  }
+  
+  .total-cost {
+    font-size: 1.5em;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: bold;
+  }
+  
+  .ant-table-tbody > tr > td {
+    padding: 12px 8px;
+  }
+  
+  .ant-btn-primary {
+    background-color: #1890ff;
+    border-color: #1890ff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .ant-btn-primary:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+  }
+  

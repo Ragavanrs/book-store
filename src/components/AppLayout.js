@@ -34,14 +34,21 @@ const AppLayout = ({ children }) => {
             <Link to={`/booklist/${localStorage.getItem("userId")}`}>Home</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<BookOutlined />}>
-            <Link to={`/book/${localStorage.getItem("userId")}`}>Add Book</Link>
+            <Link to={`/add-book/${localStorage.getItem("userId")}`}>
+              Add Book
+            </Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<BookOutlined />}>
             <Link to={`/order/${localStorage.getItem("userId")}`}>
               Place order
             </Link>
           </Menu.Item>
-          <Menu.Item key="4" icon={<LogoutOutlined />} onClick={handleLogout}>
+          <Menu.Item key="4" icon={<BookOutlined />}>
+            <Link to={`/order-summary/${localStorage.getItem("userId")}`}>
+              order Summary
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<LogoutOutlined />} onClick={handleLogout}>
             Logout
           </Menu.Item>
         </Menu>

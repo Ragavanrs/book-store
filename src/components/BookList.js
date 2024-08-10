@@ -13,9 +13,8 @@ function BookList() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/books", {
-          params: { userId },
-        });
+        const response = await axios.get("http://localhost:8080/books");
+        console.log(response.data);
         setBooks(response.data);
       } catch (error) {
         console.error("Failed to fetch books", error);
