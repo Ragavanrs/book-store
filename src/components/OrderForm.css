@@ -1,0 +1,19 @@
+/* OrderForm.css */
+.order-form-container {
+    padding: 20px;
+  }
+  
+  .order-form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .order-form-card {
+    width: 300px;
+  }
+  
+  .quantity-control {
+    margin-top: 10px;
+  }
+  
